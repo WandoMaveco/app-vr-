@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title></title>
+	<script src="https//aframe.io/releases/1.4.2/aframe.min.js"></script>
+</head>
+<body>
+<a-scene>
+ 
+<!--Camera com controle-->
+<a-entity id="cameraRig" position="0 1.6 0">
+	<a-camera look-controls wasd-controls></a-camera>
+</a-entity>
+
+<!-- sala1 -->
+<a-box position="1 1.5 -3" color="#4CC3D9"></a-box>
+<a-sphere position="2 1.25 -4" radius="1.25" color="#EF2D5E"></a-sphere>
+<a-plane position="0 0 -4" rotation="-90 0 0" width="20" height="20" color="#7BC8A4"></a-plane>
+
+<!-- Botão de ir para sala 2 -->
+<a-cylinder id="botaoSala2"
+			position="0 1 -2"
+			radius="0.3" height="0.2"
+			color="#FFC65D"
+			class="interativo">
+	<a-text value="Ir para Sala 2" align="center" position="0 0.4 0" color="#000" width="2"></a-text>
+</a-cylinder>
+
+<!-- sala2 (invisivel no inicio) -->
+<a-entity id="sala2" visible="false">
+<a-box position="1 1.5 -8" color="#00FFAA"></a-box>
+<a-sphere position="2 1.25 -9" radius="1.25" color="#3333FF"></a-sphere>
+<a-plane position="0 0 -10" rotation="-90 0 0" width="20" height="20" color="#AAAAAA"></a-plane>
+
+<!-- Botão para volta na sala 1 -->
+<a-cylinder id="botaoSala1"
+			position="0 1 -9"
+			radius="0.3" height="0.2"
+			color="#FF6666"
+			class="interativo">
+	<a-text value="Voltar para Sala 1" align="center" position="0 0.4 0" color="#000" width="3"></a-text>
+</a-cylinder>
+</a-entity>
+
+<!-- Céu -->
+<a-sky color="#ECECEC"></a-sky>
+</a-scene>
+
+<script>
+	// Troca para sala 2
+	document.querySeletor('#botaoSala2').addEventListtener('click', () =>{
+		document.querySeletor('#Sala2').setAttribute('visible', true);
+		document.querySeletor('#cameraRig').setAttribute('position', '0 1.6 -6');
+	});
+
+	// Troca para sala 1
+	document.querySeletor('#botaoSala1').addEventListtener('click', () =>{
+		document.querySeletor('#Sala2').setAttribute('visible', false);
+		document.querySeletor('#cameraRig').setAttribute('position', '0 1.6 0');
+	});
+</script>
+
+
+</html>
